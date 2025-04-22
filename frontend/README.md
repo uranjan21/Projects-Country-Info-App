@@ -1,54 +1,119 @@
-# React + TypeScript + Vite
+# Country Info App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The **Country Info App** is a full-stack web application that allows users to explore information about countries around the world. Users can search, filter, and view detailed information about countries, including their name, region, capital, population, timezones, currencies, and languages.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Search**: Search for countries by name or capital.
+- **Filters**: Filter countries by region and timezone.
+- **Infinite Scrolling**: Load more countries as you scroll.
+- **Country Details**: View detailed information about a selected country in a modal.
+- **Responsive Design**: Fully responsive and optimized for all devices.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Frontend
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **React**: Component-based UI development.
+- **TypeScript**: Type-safe development.
+- **Tailwind CSS**: Styling and responsive design.
+- **Intersection Observer API**: Infinite scrolling implementation.
+
+### Backend
+
+- **REST API**: Fetch country data from an external API (e.g., [REST Countries API](https://restcountries.com)).
+
+## Folder Structure
+
+```
+country-info-app/
+├── frontend/
+│   ├── src/
+│   │   ├── api/               # API service for fetching country data
+│   │   ├── components/        # Reusable React components
+│   │   ├── context/           # Context API for global state management
+│   │   ├── pages/             # Page components
+│   │   ├── types/             # TypeScript type definitions
+│   │   ├── App.tsx            # Main app component
+│   │   ├── index.tsx          # Entry point
+│   └── public/                # Static assets
+└── ...
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Installation
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Clone the repository:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+   ```bash
+   git clone https://github.com/your-username/country-info-app.git
+   cd country-info-app/frontend
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open the app in your browser:
+   ```
+   http://localhost:3000
+   ```
+
+## Usage
+
+1. Use the **Search Bar** to search for countries by name or capital.
+2. Apply **Filters** to narrow down the results by region or timezone.
+3. Scroll down to load more countries dynamically.
+4. Click on a country card to view detailed information in a modal.
+
+## Components
+
+### `CountryListPage`
+
+- Displays the list of countries with search and filter options.
+- Implements infinite scrolling using the Intersection Observer API.
+
+### `CountryDetailModal`
+
+- Displays detailed information about a selected country in a modal.
+- Includes data such as name, region, capital, population, timezones, currencies, and languages.
+
+### `SearchBar`
+
+- Allows users to search for countries by name or capital.
+
+### `Filters`
+
+- Provides options to filter countries by region and timezone.
+
+### `CountryCard`
+
+- Displays a summary of a country's information (name, region, flag, timezone).
+
+## Context API
+
+The app uses the **Context API** to manage global state, including:
+
+- List of countries
+- Search term and filters
+- Selected country for the modal
+- Loading state for infinite scrolling
+
+## API Integration
+
+The app fetches country data from the [REST Countries API](https://restcountries.com). The `countryService` module handles all API requests.
+
+## Acknowledgments
+
+- [REST Countries API](https://restcountries.com) for providing country data.
+- [Tailwind CSS](https://tailwindcss.com) for styling.
+- [React](https://reactjs.org) for the frontend framework.
+
+---
